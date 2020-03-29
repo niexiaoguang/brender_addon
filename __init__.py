@@ -38,12 +38,17 @@ sys.path.append(lib_path)
 lib_path = str(brender_addon_path) + sep + 'avro-python3-1.9.2'
 sys.path.append(lib_path)
 
+lib_path = str(brender_addon_path) + sep + 'qiniu-python-sdk-7.2.8'
+sys.path.append(lib_path)
 
 
 import pika
 import avro
 import ssl
+import qiniu
 print('world')
+print (qiniu)
+print(dir(qiniu))
 import avro.schema
 from avro.datafile import DataFileReader, DataFileWriter
 from avro.io import DatumReader, DatumWriter
@@ -76,11 +81,11 @@ def test_pika():
     # connection.close()
 
 
-    context = ssl.create_default_context(cafile="./ssl/amqps/cacert.pem")
+    context = ssl.create_default_context(cafile="./ssl/cacert.pem")
     context.set_ciphers('ALL:@SECLEVEL=0') # 
 
-    context.load_cert_chain(certfile="./ssl/amqps/brender-client.cert.pem",
-                            keyfile="./ssl/amqps/brender-client.key.pem",
+    context.load_cert_chain(certfile="./ssl/brender-client.cert.pem",
+                            keyfile="./ssl/brender-client.key.pem",
                             password="dMokP0brnSeGsphGCfsH41Yr2cwDLauB")
 
     credentials = pika.PlainCredentials('guest', 'guest')
