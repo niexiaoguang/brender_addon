@@ -1,3 +1,4 @@
 *.pem
 /ssl
 .DS_Store
+*.pyc
