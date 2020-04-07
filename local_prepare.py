@@ -54,3 +54,28 @@ currentProjPath = Path(bpy.path.abspath('//'))
 jsonFilePath = currentProjPath / jsonFileName
 with jsonFilePath.open('w') as f:
     f.write(jsonStr)
+
+
+
+
+# use a tmp to store original values , restore after generate new blend file for uploading
+tmp = {}
+#print(type(tmp))
+for i in bpy.data.images:
+    # except render result image 
+    # and etc. TODO
+    if(i.filepath and i.name != 'Render Result'):
+#        print(i.name)
+        # save original value
+        tmp[i.name] = i.filepath
+        i.filepath = 'haha'
+        relpath = bpy.path.relpath(i.filepath)
+        abspath =  bpy.path.abspath(i.filepath)
+
+bpy.ops.wm.save_as_mainfile(filepath = bpy.path.abspath('//') + "backup2.blend",copy=True,compress=True)
+
+# restore value
+for i in bpy.data.images:
+    
+    if(i.filepath and i.name != 'Render Result'):
+        i.filepath = tmp[i.name]
