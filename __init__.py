@@ -14,7 +14,8 @@
 import os
 import pathlib
 import sys
-# from . import auto_load
+import time
+from . import auto_load
 
 brender_addon_path = pathlib.Path(__file__).parent.absolute()
 sep = os.path.sep
@@ -50,7 +51,7 @@ bl_info = {
 }
 
 
-# auto_load.init()
+auto_load.init()
 
 print('hello')
 
@@ -68,19 +69,6 @@ print(hex2)
 s = binascii.unhexlify(hex2)
 print(s.decode())
 
-# for method_frame, properties, body in channel.consume('test'):
-#     # Display the message parts and acknowledge the message
-#     print(method_frame, properties, body)
-#     channel.basic_ack(method_frame.delivery_tag)
-
-#     # Escape out of the loop after 10 messages
-#     if method_frame.delivery_tag == 10:
-#         break
-
-# # Cancel the consumer and return any pending messages
-# requeued_messages = channel.cancel()
-# print('Requeued %i messages' % requeued_messages)
-# connection.close()
 
 
 def test_pika():
@@ -119,7 +107,7 @@ def test_pika():
         ch = conn.channel()
         ch.queue_declare("foobar")
         ch.basic_publish(
-            "", "foobar", "Hello, world! with ssl from blender by pika")
+            "", "foobar", "Hello, world! with ssl from blender by pika " + str(time.time()))
         # print(ch.basic_get("foobar"))
 
 
@@ -127,11 +115,11 @@ test_pika()
 
 
 def register():
-    # auto_load.register()
-    pass
+    auto_load.register()
+
 
 
 def unregister():
-    # auto_load.unregister()
-    pass
+    auto_load.unregister()
+
 
