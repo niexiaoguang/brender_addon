@@ -30,17 +30,7 @@ lib_path = str(brender_addon_path) + sep + 'libs/hashids-1.2.0'
 sys.path.append(lib_path)
 
 
-from .mylib import myavro
-from .mylib import mypika
-from .mylib import myqiniu
-from .mylib import myutils
-
 auto_load.init()
-
-
-
-
-
 
 
 

@@ -273,12 +273,3 @@ def hash1decode(raw):
     decoded = decoded.decode()
 
     return decoded
-
-
-def test_hash():
-    s1 = 'hello'
-    print(s1)
-    s1 = hash1encode(s1)
-    print(s1)
-    s1 = hash1decode(s1)
-    print(s1)
