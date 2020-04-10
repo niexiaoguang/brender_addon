@@ -1,5 +1,5 @@
 *.pem
 /ssl
-.DS_Store
+*.DS_Store
 *.pyc
 *.pyc
